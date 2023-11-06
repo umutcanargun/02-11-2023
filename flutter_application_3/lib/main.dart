@@ -62,22 +62,24 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionState extends State<QuestionScreen> {
   int initialQuestionIndex = 0;
   int properlyAnsweredQuestions = 0;
-  void displayQuestions(String selectedOption) {
+
+  void checkAnswer(String selectedAnswer) {
+    if (questions[initialQuestionIndex].trueAnswer == selectedAnswer) {
+      setState(() {
+        properlyAnsweredQuestions++;
+      });
+    }
     if (initialQuestionIndex < questions.length - 1) {
       setState(() {
-        initialQuestionIndex = initialQuestionIndex + 1;
+        initialQuestionIndex++;
       });
-      if (selectedOption == questions[initialQuestionIndex].trueAnswer) {
-        setState(() {
-          properlyAnsweredQuestions = properlyAnsweredQuestions + 1;
-        });
-      }
     } else {
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => ResultScreen(
-                properlyAnsweredQuestions: properlyAnsweredQuestions)),
+          builder: (context) => ResultScreen(
+              properlyAnsweredQuestions: properlyAnsweredQuestions),
+        ),
       );
     }
   }
@@ -91,7 +93,7 @@ class _QuestionState extends State<QuestionScreen> {
           ...questions[initialQuestionIndex].options.map((answer) {
             return ElevatedButton(
                 onPressed: () {
-                  displayQuestions(answer);
+                  checkAnswer(answer);
                 },
                 child: Text(
                   answer,
