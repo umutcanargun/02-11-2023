@@ -90,7 +90,8 @@ class _QuestionState extends State<QuestionScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        child:
+            Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           Text(questions[initialQuestionIndex].question),
           ...questions[initialQuestionIndex].options.map((answer) {
             return OutlinedButton(
