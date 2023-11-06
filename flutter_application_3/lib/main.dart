@@ -87,18 +87,21 @@ class _QuestionState extends State<QuestionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text(questions[initialQuestionIndex].question),
           ...questions[initialQuestionIndex].options.map((answer) {
-            return ElevatedButton(
+            return OutlinedButton(
                 onPressed: () {
                   checkAnswer(answer);
                 },
                 child: Text(
                   answer,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(
+                      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                      color: Colors.black),
                 ));
           })
         ]),
