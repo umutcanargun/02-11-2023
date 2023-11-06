@@ -29,6 +29,7 @@ class StartScreen extends StatelessWidget {
                   fontSize: 36,
                   fontWeight: FontWeight.bold),
             ),
+            const SizedBox(height: 20),
             OutlinedButton.icon(
               onPressed: () {
                 Navigator.push(
@@ -103,7 +104,8 @@ class _QuestionState extends State<QuestionScreen> {
                       backgroundColor: Color.fromARGB(255, 255, 255, 255),
                       color: Colors.black),
                 ));
-          })
+          }),
+          const SizedBox(height: 20),
         ]),
       ),
     );
@@ -128,6 +130,7 @@ class ResultScreen extends StatelessWidget {
               "Quiz is over, $properlyAnsweredQuestions questions were answered correctly!",
               style: const TextStyle(fontSize: 16, color: Colors.black),
             ),
+            const SizedBox(height: 20),
             ElevatedButton.icon(
               onPressed: () {
                 Navigator.popUntil(context, (route) => route.isFirst);
